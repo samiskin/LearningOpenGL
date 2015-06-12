@@ -21,6 +21,7 @@ Display::Display(int width, int height, const std::string &title) {
     glewExperimental = GL_TRUE;
     GLenum status = glewInit();
 
+
     if (status != GLEW_OK) {
         std::cerr << "Glew failed to initialize!" << std::endl;
     }

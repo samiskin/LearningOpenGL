@@ -24,5 +24,5 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -framework OpenGL")
 
 
 set(SOURCE_FILES main.cpp)
-add_executable(OpenGL ${SOURCE_FILES} display.cpp display.h shader.cpp shader.h res/basicShader.vs res/basicShader.fs mesh.cpp mesh.h)
+add_executable(OpenGL ${SOURCE_FILES} display.cpp display.h shader.cpp shader.h res/basicShader.vs res/basicShader.fs mesh.cpp mesh.h stb_image.c stb_image.h texture.cpp texture.h)
 target_link_libraries(OpenGL ${SDL2_LIBRARY})
