@@ -2,7 +2,7 @@
 // Created by Shiranka Miskin on 6/10/15.
 //
 
-#include "Display.h"
+#include "display.h"
 #include <GL/glew.h>
 
 Display::Display(int width, int height, const std::string &title) {
@@ -18,13 +18,13 @@ Display::Display(int width, int height, const std::string &title) {
     m_window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL);
     m_glContext = SDL_GL_CreateContext(m_window);
 
-    #ifndef __APPLE__
+    //#ifndef __APPLE__
     GLenum status = glewInit();
 
     if (status != GLEW_OK) {
         std::cerr << "Glew failed to initialize!" << std::endl;
     }
-    #endif
+    //#endif
     m_isClosed = false;
 }
 
