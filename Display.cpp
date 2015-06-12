@@ -18,13 +18,12 @@ Display::Display(int width, int height, const std::string &title) {
     m_window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL);
     m_glContext = SDL_GL_CreateContext(m_window);
 
-    //#ifndef __APPLE__
+    glewExperimental = GL_TRUE;
     GLenum status = glewInit();
 
     if (status != GLEW_OK) {
         std::cerr << "Glew failed to initialize!" << std::endl;
     }
-    //#endif
     m_isClosed = false;
 }
 
