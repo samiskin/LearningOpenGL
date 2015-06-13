@@ -39,3 +39,11 @@ if (status != GLEW_OK) {
 #endif
 ```
     
+
+
+##Day 2
+
+Finished the rest of the Tutorial series, ending up with a Monkey that rotates with texture and lighting!
+Had an issue where it OpenGL would say its version was 2.1 and I thought I would not be able to use my mac, but turns out I had to run `glewExperimental = GL_TRUE` for it to work with new OpenGL > 3.0 methods.
+
+Next step is probably looking at the tutorials in http://ogldev.atspace.co.uk/
