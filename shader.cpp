@@ -20,12 +20,15 @@ Shader::Shader(const std::string& fileName) {
 
     glBindAttribLocation(m_program, 0, "position"); // link buffers to variables in shader files
     glBindAttribLocation(m_program, 1, "texCoord");
+    glBindAttribLocation(m_program, 2, "normal");
 
     glLinkProgram(m_program);
     checkShaderError(m_program, GL_LINK_STATUS, true, "Error: Program linking failed: ");
 
     glValidateProgram(m_program);
     checkShaderError(m_program, GL_VALIDATE_STATUS, true, "Error: Program is invalid: ");
+
+    m_uniforms[TRANSFORM_U] = glGetUniformLocation(m_program, "transform");
 }
 
 Shader::~Shader() {
@@ -40,6 +43,13 @@ Shader::~Shader() {
 
 void Shader::bind() {
     glUseProgram(m_program);
+}
+
+void Shader::update(const Transform& transform, const Camera& camera) {
+
+    glm::mat4 model = camera.getViewProjection() * transform.getModel();
+    // matrix4 of floating point values
+    glUniformMatrix4fv(m_uniforms[TRANSFORM_U], 1, GL_FALSE, &model[0][0]); // the handle of the uniform, number of things we're sending, whether or not we want to transpose the matrix into the arrangement GL expects, address of matrix
 }
 
 
